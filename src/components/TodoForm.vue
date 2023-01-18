@@ -1,6 +1,9 @@
 <script setup>
-import { addTodos } from '@/controller/todos.controlloer'
+import { addTodos,getTodos } from '@/controller/todos.controlloer'
+import { globalStore } from '@/store/globals.store';
 import { ref } from 'vue';
+
+const store = globalStore()
 const inp = ref('')
 const handleClick = async () => {
     try {
@@ -9,6 +12,8 @@ const handleClick = async () => {
             return
         }
         await addTodos(inp.value)
+        const res = await  getTodos()
+        store.todos = res
         console.log("done");
     } catch (error) {
         console.log(error);
@@ -19,8 +24,10 @@ const handleClick = async () => {
 <template>
     <div>
         <form class="d-flex" @submit.prevent="handleClick($event)">
-            <input class="form-control me-2" type="text" placeholder="Add Todo" aria-label="Add Todo"
-                @change="(event) => { inp = event.currentTarget.value }">
+            <input 
+            class="form-control me-2" 
+            type="text" placeholder="Add Todo" aria-label="Add Todo"
+            v-model="inp">
             <button class="btn btn-outline-dark" type="submit">ADD</button>
         </form>
     </div>

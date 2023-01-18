@@ -6,6 +6,7 @@ import { onMounted } from 'vue';
 import {getTodos, deleteTodos} from '@/controller/todos.controlloer'
 
 const store = globalStore()
+
 onMounted(async()=>{
     const res = await  getTodos()
     store.todos = res
@@ -13,8 +14,9 @@ onMounted(async()=>{
 
 const deleteHandler = async (id)=>{
     await deleteTodos(id)
+    const res = store.todos.filter(e=>e.id !== id)
+    store.todos = res
 }
-
 </script>
 
 <template>
