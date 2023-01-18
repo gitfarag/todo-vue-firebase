@@ -1,4 +1,4 @@
-import { collection, doc, getDocs,onSnapshot, setDoc, deleteDoc } from "firebase/firestore";
+import { collection, doc, getDocs, setDoc, deleteDoc } from "firebase/firestore";
 import { db } from "@/firebase";
 
 const getTodos =async () => {
@@ -35,4 +35,5 @@ const deleteTodos = async (n) => {
         return error;
     }
 };
+
 export { getTodos, addTodos, deleteTodos };

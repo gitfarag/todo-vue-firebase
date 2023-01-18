@@ -5,6 +5,7 @@ import { ref } from 'vue';
 
 const store = globalStore()
 const inp = ref('')
+
 const handleClick = async () => {
     try {
         if(!inp.value){
