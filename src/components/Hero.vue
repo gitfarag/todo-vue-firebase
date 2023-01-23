@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row todo-wrapper">
             <div class="d-flex flex-column align-items-center mt-5">
-<TodoForm/>
+                <TodoForm/>
             </div>
         </div>
     </div>
